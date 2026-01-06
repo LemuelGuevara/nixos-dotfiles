@@ -1,6 +1,8 @@
-# Nixos + Hyprland
+# NixOS + Hyprland
 
 NixOS dotfiles that contains shared dotfiles and hyprland dotfiles via submodules.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b5d8a0f3-0976-4fc6-a1e3-67a48dbde93f" />
 
 ## Config Setup
 
