@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 let
   dotfilesRoot = "${config.home.homeDirectory}/nixos-dotfiles";
@@ -12,115 +12,92 @@ let
     tmux = "config/dotfiles/.config/tmux";
     mpv = "config/mpv";
   };
-in
 
-{
-    home.username = "lemuelguevara";
-    home.homeDirectory = "/home/lemuelguevara";
-    home.stateVersion = "25.11";
+in {
+  home.username = "lemuelguevara";
+  home.homeDirectory = "/home/lemuelguevara";
+  home.stateVersion = "25.11";
 
-    # Programs
-    programs.git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Lemuel Guevara";
-          email = "lemuelguevara@gmail.com";
-        };
-        init.defaultBranch = "main";
+  # Programs
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Lemuel Guevara";
+        email = "lemuelguevara@gmail.com";
       };
+      init.defaultBranch = "main";
     };
-    programs.bash = {
-        enable = true;
-        shellAliases = {
-            actually = "echo actually using nixos fr";
-        };
-        profileExtra = ''
-          if uwsm check may-start; then
-              exec uwsm start hyprland-uwsm.desktop
-          fi
-        '';
-    };
+  };
+  programs.bash = {
+    enable = true;
+    shellAliases = { actually = "echo actually using nixos fr"; };
+    profileExtra = ''
+      if uwsm check may-start; then
+          exec uwsm start hyprland-uwsm.desktop
+      fi
+    '';
+  };
 
-    
-    xdg.configFile = builtins.mapAttrs (name: repoPath: {
-      source = link repoPath;
-    }) xdgConfigs;
+  xdg.configFile =
+    builtins.mapAttrs (name: repoPath: { source = link repoPath; }) xdgConfigs;
 
-    home.file.".zshrc".source = link "config/dotfiles/.zshrc";
+  home.file.".zshrc".source = link "config/dotfiles/.zshrc";
 
-    home.packages = with pkgs; [
-      # User Applications
-      vivaldi
-      ghostty
-      kitty
-      discord
-      qbittorrent
-      heroic
-      mpv
-      
-      # Desktop Environment
-      waybar
-      rofi
-      wl-clipboard
-      cliphist
-      pipewire
-      wireplumber
-      hyprpaper
-      hyprshot
+  home.packages = with pkgs; [
+    # User Applications
+    vivaldi
+    ghostty
+    kitty
+    discord
+    qbittorrent
+    heroic
+    mpv
 
-      # Development Tools
-      neovim
-      python3
-      uv
-      rustup
-      nodejs_24
-      gcc
+    # Desktop Environment
+    waybar
+    rofi
+    wl-clipboard
+    cliphist
+    pipewire
+    wireplumber
+    hyprpaper
+    hyprshot
 
-      # --- Formatters ---
-      stylua            # Lua formatter
-      prettierd         # JS/TS/HTML formatter (daemon version)
-      ruff              # Python formatter/linter (extremely fast)
+    # Development Tools
+    neovim
+    python3
+    uv
+    rustup
+    nodejs_24
+    gcc
+    nixd
 
-      # --- Linters ---
-      eslint_d          # JS/TS linter (daemon version)
-      selene            # Lua linter (faster than luacheck)
+    # CLI Utilities
+    ripgrep
+    starship
+    tmux
+    tree-sitter
+    fastfetch
+    eza
+    yazi
+    lazygit
+    dysk
+    disktui
+    bluetui
+    wiremix
+    btop
+    nvitop
 
-      # --- LSP Servers ---
-      lua-language-server          # Lua
-      typescript-language-server   # JS/TS
-      tailwindcss-language-server  # Tailwind
-      vscode-langservers-extracted # Provides JSON, HTML, and CSS LSPs (replaces json-lsp)
-      nixfmt
+    # Archives & Files
+    zip
+    unzip
 
-      # CLI Utilities
-      ripgrep
-      starship
-      tmux
-      tree-sitter
-      fastfetch
-      eza
-      yazi
-      lazygit
-      dysk
-      disktui
-      bluetui
-      wiremix
-      btop
-      nvitop
-      
-      # Archives & Files
-      zip
-      unzip
-
-      (pkgs.writeShellApplication {
-         name = "ns";
-         runtimeInputs = with pkgs; [
-            fzf
-            nix-search-tv
-         ];
-	       checkPhase = "";
-         text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
-      })
-   ];
+    (pkgs.writeShellApplication {
+      name = "ns";
+      runtimeInputs = with pkgs; [ fzf nix-search-tv ];
+      checkPhase = "";
+      text = builtins.readFile "${pkgs.nix-search-tv.src}/nixpkgs.sh";
+    })
+  ];
 }
