@@ -88,6 +88,7 @@ in {
     wiremix
     btop
     nvitop
+    pfetch
 
     # Archives & Files
     zip
