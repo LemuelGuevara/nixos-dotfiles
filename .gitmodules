@@ -1,0 +1,6 @@
+[submodule "config/dotfiles"]
+	path = config/dotfiles
+	url = git@github.com:LemuelGuevara/dotfiles.git
+[submodule "config/hyprland-dotfiles"]
+	path = config/hyprland-dotfiles
+	url = git@github.com:LemuelGuevara/hyprland-dotfiles.git
