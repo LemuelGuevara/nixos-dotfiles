@@ -11,6 +11,7 @@ let
     nvim = "config/dotfiles/.config/nvim";
     tmux = "config/dotfiles/.config/tmux";
     mpv = "config/mpv";
+    rmpc = "config/rmpc";
   };
 
 in {
@@ -36,6 +37,20 @@ in {
       if uwsm check may-start; then
           exec uwsm start hyprland-uwsm.desktop
       fi
+    '';
+  };
+
+  # Services
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/lemuelguevara/Music";
+
+    extraConfig = ''
+      # Audio Output for PipeWire
+      audio_output {
+        type "pipewire"
+        name "PipeWire Sound Server"
+      }
     '';
   };
 
@@ -89,6 +104,7 @@ in {
     btop
     nvitop
     pfetch
+    rmpc
 
     # Archives & Files
     zip
