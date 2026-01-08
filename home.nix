@@ -68,6 +68,7 @@ in {
     qbittorrent
     heroic
     mpv
+    spotify
 
     # Desktop Environment
     waybar
