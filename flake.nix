@@ -12,9 +12,10 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, neovim-nightly-overlay, ... }@inputs: {
+    inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, ... }: {
       nixosConfigurations.hyprnixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
