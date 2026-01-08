@@ -58,6 +58,8 @@
     };
   };
 
+  services.tailscale.enable = true;
+
   # Networking
   networking.hostName = "hyprnixos";
   networking.networkmanager.enable = true;
