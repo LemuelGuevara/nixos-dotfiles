@@ -121,6 +121,10 @@
   };
   programs.gamemode.enable = true;
   programs.nix-ld.enable = true;
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
 
