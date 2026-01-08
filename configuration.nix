@@ -116,6 +116,8 @@
       true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall =
       true; # Open ports in the firewall for Steam Local Network Game Transfers
+    package =
+      pkgs.steam.override { extraPkgs = pkgs: with pkgs; [ nspr nss ]; };
   };
   programs.gamemode.enable = true;
   programs.nix-ld.enable = true;
@@ -131,6 +133,7 @@
     mangohud
     protonup-qt
     ntfs3g
+    (steam.override { extraPkgs = pkgs: with pkgs; [ nspr nss ]; }).run
 
     # Kde
     kdePackages.qtsvg
