@@ -17,6 +17,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+
+  # CachyOS kernel optimizations
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+  };
+
   # Security
   security.rtkit.enable = true;
 
@@ -89,7 +97,7 @@
 
     nvidiaSettings = true;
 
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = pkgs.linuxPackages_cachyos-lto.nvidiaPackages.beta;
 
   };
 

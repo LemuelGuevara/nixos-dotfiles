@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -11,13 +12,14 @@
     };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, home-manager, neovim-nightly-overlay, ... }: {
+  outputs = inputs@{ self, nixpkgs, chaotic, home-manager
+    , neovim-nightly-overlay, ... }: {
       nixosConfigurations.hyprnixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
