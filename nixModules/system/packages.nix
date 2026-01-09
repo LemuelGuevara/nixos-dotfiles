@@ -1,26 +1,26 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    # --- System & Core ---
+    # Core Utilities
     vim
     wget
     git
-    ntfs3g # File system support
-    blueman # Bluetooth manager
+    ntfs3g
+    blueman
     zip
     unzip
 
-    # --- Development Stack ---
+    #  Development Tools
     gcc
     gnumake
     python3
-    uv # Fast Python package manager
-    rustup # Rust toolchain
+    uv
+    rustup
     nodejs_24
-    nixd # Nix Language Server
+    nixd
     jetbrains.idea
     neovim
 
-    # --- Desktop & Hyprland Environment ---
+    # Desktop Environment
     waybar
     rofi
     wl-clipboard
@@ -32,7 +32,7 @@
     kdePackages.qtsvg
     kdePackages.dolphin
 
-    # --- Graphical Applications ---
+    # GUI Applications
     vivaldi
     ghostty
     kitty
@@ -41,32 +41,31 @@
     mpv
     qbittorrent
 
-    # --- Gaming ---
+    # Gaming
     heroic
     mangohud
     protonup-qt
     (steam.override { extraPkgs = pkgs: with pkgs; [ nspr nss ]; }).run
 
-    # --- Terminal Utilities (CLI) ---
+    # CLI Utilities
     ripgrep
-    starship # Shell prompt
+    starship
     tmux
     tree-sitter
-    fastfetch # System info
+    fastfetch
     pfetch
-    eza # Modern 'ls'
-    yazi # Terminal file manager
+    eza
+    yazi
     lazygit
-    btop # Resource monitor
-    nvitop # GPU monitor
-    dysk # Disk info
+    btop
+    nvitop
+    dysk
     disktui
     bluetui
     wiremix
-    rmpc # MPD client
-    cava # Audio visualizer
+    rmpc
+    cava
 
-    # --- Custom Shell Scripts ---
     (pkgs.writeShellApplication {
       name = "ns";
       runtimeInputs = with pkgs; [ fzf nix-search-tv ];
