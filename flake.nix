@@ -18,14 +18,14 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+          ./nixModules/system/configuration.nix
           chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.lemuelguevara = import ./home.nix;
+              users.lemuelguevara = import ./nixModules/home/home.nix;
               backupFileExtension = "backup";
             };
             nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ];
