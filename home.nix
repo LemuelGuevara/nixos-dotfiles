@@ -76,6 +76,7 @@ in {
     heroic
     mpv
     spotify
+    jetbrains.idea
 
     # Desktop Environment
     waybar
