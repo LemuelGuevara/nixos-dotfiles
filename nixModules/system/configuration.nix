@@ -7,6 +7,7 @@
     ./packages.nix
     ./programs.nix
     ./services.nix
+    ./virualisation.nix
   ];
 
   # Automatic updating

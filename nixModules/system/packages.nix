@@ -19,6 +19,11 @@
     nixd
     jetbrains.idea
     neovim
+    dive
+    podman-tui
+    podman-desktop
+    podman-compose
+    docker-compose
 
     # Desktop Environment
     waybar
