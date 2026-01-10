@@ -5,9 +5,11 @@
     package = pkgs.ananicy-cpp;
   };
 
+  # Display
   services.xserver.videoDrivers = [ "nvidia" ];
   services.displayManager.ly.enable = true;
 
+  # Audio and bluetooth
   services.blueman.enable = true;
   services.pipewire = {
     enable = true;
@@ -40,5 +42,6 @@
     };
   };
 
+  # Application services
   services.tailscale.enable = true;
 }
