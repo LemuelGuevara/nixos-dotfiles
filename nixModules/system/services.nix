@@ -6,8 +6,8 @@
   };
 
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.displayManager.ly.enable = true;
 
-  services.getty.autologinUser = "lemuelguevara";
   services.blueman.enable = true;
   services.pipewire = {
     enable = true;
