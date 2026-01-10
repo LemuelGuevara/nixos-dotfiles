@@ -8,6 +8,7 @@
     blueman
     zip
     unzip
+    openssl
 
     #  Development Tools
     gcc
