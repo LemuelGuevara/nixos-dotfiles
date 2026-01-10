@@ -39,11 +39,5 @@ in {
   programs.bash = {
     enable = true;
     shellAliases = { actually = "echo actually using nixos fr"; };
-    profileExtra = ''
-      if uwsm check may-start; then
-          exec uwsm start hyprland-uwsm.desktop
-      fi
-    '';
   };
-
 }
