@@ -42,6 +42,8 @@
     };
   };
 
+  services.udisks2.enable = true;
+
   # Application services
   services.tailscale.enable = true;
 }

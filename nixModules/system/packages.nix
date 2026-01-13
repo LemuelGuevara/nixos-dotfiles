@@ -9,6 +9,13 @@
     zip
     unzip
     openssl
+    parted
+    util-linux
+    e2fsprogs
+    dosfstools
+    exfatprogs
+    btrfs-progs
+    smartmontools
 
     #  Development Tools
     gcc
