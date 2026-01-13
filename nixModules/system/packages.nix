@@ -32,6 +32,8 @@
     podman-desktop
     podman-compose
     docker-compose
+    pnpm
+    bun
 
     # Desktop Environment
     waybar
