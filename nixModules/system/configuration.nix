@@ -25,6 +25,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
   # Security
   security.rtkit.enable = true;
@@ -37,7 +38,7 @@
 
   users.users.lemuelguevara = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "video" "camera" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [ tree ];
     shell = pkgs.zsh;
   };

@@ -46,6 +46,8 @@
     spotify
     mpv
     qbittorrent
+    cameractrls
+    cameractrls-gtk4
 
     # Gaming
     heroic
